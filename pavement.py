@@ -134,15 +134,6 @@ def run(args):
 
 
 @task
-def commit():
-    """Commit only if all the tests pass."""
-    if _test_all() == 0:
-        subprocess.check_call(['git', 'commit'])
-    else:
-        print_failure_message('\nTests failed, not committing.')
-
-
-@task
 def coverage():
     """Run tests and show test coverage report."""
     try:
@@ -255,3 +246,9 @@ def doc_clean():
 
     if retcode:
         raise SystemExit(retcode)
+
+
+@task
+@needs('doc_html', 'setuptools.command.sdist', 'setuptools.command.upload')
+def release():
+    pass
