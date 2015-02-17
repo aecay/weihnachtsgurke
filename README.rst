@@ -15,9 +15,10 @@ University of York’s `Department of Language and Linguistic Science
 It is named for the pseudo-German `Christmas pickle hunt
 <https://en.wikipedia.org/wiki/Christmas_pickle>`_.
 
-Links (currently non-functional):
+Links:
 
-- User’s manual
+- `User’s manual <http://weihnachtsgurke.readthedocs.org/en/latest/>`_
+- PYCCLE-TCP corpus page (currently non-existent)
 
 .. |docs| image:: https://readthedocs.org/projects/weihnachtsgurke/?badge=latest
     :alt: Documentation Status
