@@ -40,3 +40,4 @@ pip-log.txt
 # development files
 
 venv/
+venv2/

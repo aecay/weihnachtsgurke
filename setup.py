@@ -257,7 +257,7 @@ setup_dict = dict(
     zip_safe=False,  # don't use eggs
     entry_points={
         'console_scripts': [
-            'wng = wng.wng:main'
+            'wng = wng.cmdline:main'
         ]
     }
 )
