@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
-"""A program for searching for strings of text in the PYCCLE corpus"""
+"""A program for searching the PYCCLE-TCP corpus"""
 
-from pyccle_search import metadata
+from wng import metadata
 
 
 __version__ = metadata.version

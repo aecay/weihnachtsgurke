@@ -35,16 +35,16 @@ except ImportError:
 sys.path.append('.')
 
 ## Constants
-CODE_DIRECTORY = 'pyccle_search'
+CODE_DIRECTORY = 'wng'
 DOCS_DIRECTORY = 'docs'
 TESTS_DIRECTORY = 'tests'
 PYTEST_FLAGS = ['--doctest-modules']
 
 # Import metadata. Normally this would just be:
 #
-#     from pyccle_search import metadata
+#     from wng import metadata
 #
-# However, when we do this, we also import `pyccle_search/__init__.py'. If this
+# However, when we do this, we also import `wng/__init__.py'. If this
 # imports names from some other modules and these modules have third-party
 # dependencies that need installing (which happens after this file is run), the
 # script will crash. What we do instead is to load the metadata module by path
@@ -213,15 +213,6 @@ class TestAllCommand(TestCommand):
         raise SystemExit(_test_all())
 
 
-# define install_requires for specific Python versions
-python_version_specific_requires = []
-
-# as of Python >= 2.7 and >= 3.2, the argparse module is maintained within
-# the Python standard library, otherwise we install it as a separate package
-if sys.version_info < (2, 7) or (3, 0) <= sys.version_info < (3, 3):
-    python_version_specific_requires.append('argparse')
-
-
 # See here for more options:
 # <http://pythonhosted.org/setuptools/setuptools.html>
 setup_dict = dict(
@@ -254,8 +245,8 @@ setup_dict = dict(
     ],
     packages=find_packages(exclude=(TESTS_DIRECTORY,)),
     install_requires=[
-        # your module dependencies
-    ] + python_version_specific_requires,
+        "click==3.3"
+    ],
     # Allow tests to be run with `python setup.py test'.
     tests_require=[
         'pytest==2.5.1',
@@ -266,12 +257,8 @@ setup_dict = dict(
     zip_safe=False,  # don't use eggs
     entry_points={
         'console_scripts': [
-            'pyccle_search_cli = pyccle_search.main:entry_point'
-        ],
-        # if you have a gui, use this
-        # 'gui_scripts': [
-        #     'pyccle_search_gui = pyccle_search.gui:entry_point'
-        # ]
+            'wng = wng.wng:main'
+        ]
     }
 )
 

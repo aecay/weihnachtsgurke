@@ -129,7 +129,7 @@ def run(args):
     # executable. So we just pass the package name in as the executable name,
     # since it's close enough. This should never be seen by an end user
     # installing through Setuptools anyway.
-    from pyccle_search.main import main
+    from wng.main import main
     raise SystemExit(main([CODE_DIRECTORY] + args))
 
 
@@ -235,8 +235,8 @@ def doc_open():
 def get_tasks():
     """Get all paver-defined tasks."""
     from paver.tasks import environment
-    for task in environment.get_tasks():
-        print(task.shortname)
+    for task_ in environment.get_tasks():
+        print(task_.shortname)
 
 
 @task
