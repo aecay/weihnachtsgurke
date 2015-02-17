@@ -10,3 +10,6 @@ python:
 
 install: "pip install -r requirements-dev.txt"
 script: "paver test"
+
+notifications:
+  email: false
