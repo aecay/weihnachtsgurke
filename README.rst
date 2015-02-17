@@ -2,6 +2,8 @@
  Weihnachtsgurke: a PYCCLE-TCP Search Tool
 ===========================================
 
+|docs|
+
 This is Weihnacktsgurke, a search tool for the PYCCLE-TCP corpus.  The
 corpus and this program have been developed by `Aaron Ecay
 <http://aaronecay.com>`_ under the auspices of the `Centre for
@@ -14,4 +16,10 @@ It is named for the pseudo-German `Christmas pickle hunt
 <https://en.wikipedia.org/wiki/Christmas_pickle>`_.
 
 Links (currently non-functional):
+
 - User’s manual
+
+.. |docs| image:: https://readthedocs.org/projects/weihnachtsgurke/?badge=latest
+    :alt: Documentation Status
+    :scale: 100%
+    :target: https://readthedocs.org/projects/weihnachtsgurke/
