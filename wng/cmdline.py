@@ -52,7 +52,7 @@ def main(search_file, files, output):
             sentences = f.read().split("\n\n")
             for sentence in sentences:
                 for name, pat_rx in pat:
-                    m = pat_rx.match(sentence)
+                    m = pat_rx.search(sentence)
                     if m:
                         gps = m.groupdict()
                         gps["file"] = fname
