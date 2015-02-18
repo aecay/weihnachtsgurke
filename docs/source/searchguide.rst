@@ -163,6 +163,26 @@ them (by examining the ``adj_word`` column in the output): ::
     ADJ as adj
     N{cat}
 
+Tips and tricks
+===============
+
+Negative matches
+----------------
+
+Python has a facility for negative assertions in regular expressions,
+which verifies that a certain expression does not match.  This is
+expressed by the syntax ``(?!`` regex ``)``.  Note that this
+construction does not advance the match window.  Thus, in common usage,
+it should be followed by ``.*`` outside of the negative assertion.  For
+an example of matching any word but *only* (and spelling variants), see
+the following section.
+
+TODO
+----
+
+TODO: what else to include here?
+
+
 Example
 =======
 
@@ -170,31 +190,42 @@ Here is an example search file which allows us to search for negative
 declarative sentences with a pronoun subject which wither have or lack
 *do* support: ::
 
-    hasdo:
-      PRO as subj
-      ADV *
-      DO[PD]
-      ADV *
-      NEG
-      ADV *
-      VB as verb
+    do:
+
+    PRO as subject
+    ADV *
+    DOD|DOP
+    ADV *
+    NEG
+    ADV *
+    VB as verb
 
     ==
 
-    nodo:
-      PRO as subj
-      ADV *
-      VB[PD] as verb
-      ADV|PRO *
-      NEG
+    simple:
 
-Adverbs are allowed to intervene freely; the ``nodo`` case also allows
-pronouns to intervene between the verb and the negation, as in *I saw
-it not.* The output of this search allows the subject and verb to be
-examined (for example to eliminate errors tagging errors where the
-subject is not actually a nominative case pronoun.)
+    PRO as subject
+    ADV *
+    VBP|VBD as verb
+    ADV|PRO *
+    NEG
+    {(?!only|onely).*} as foll1
+    .* as foll2
 
-Tips and tricks
-===============
+Adverbs are allowed to intervene freely; the ``simple`` case also
+allows pronouns to intervene between the verb and the negation, as in
+*I saw it not.* The output of this search allows the subject and verb
+to be examined (for example to eliminate errors tagging errors where
+the subject is not actually a nominative case pronoun.)  The regular
+expression associated with ``foll1`` is a negative match, covered in
+the preceding section.  It excludes cases like “I know not only Bob but
+also his family.”
 
-TODO: negative assertions, ...
+A complete use of this search would involve further filtering of ``foll1``
+and ``foll2`` to eliminate cases like “He told me not to call after 8pm,”
+which contains a string (“he told me not”) which without this filtering
+would be counted as a failure of the *do* support rule to apply, whereas
+it is clearly not.
+
+..
+  TODO: for further info, see the methods section of my dissertation (link)

@@ -19,7 +19,6 @@ Linguistic History and Diversity
 University of York’s `Department of Language and Linguistic Science
 <http://www.york.ac.uk/language/>`_.
 
-
 The corpus is tagged with the `PPCEME tagset
 <http://www.ling.upenn.edu/histcorpora/annotation/index.html>`_.
 Familiarity with it will be helpful in understanding this doucment.
@@ -29,9 +28,10 @@ Contents:
 .. toctree::
    :maxdepth: 2
 
-   usage
+   install
    commandline
    searchguide
+   output
 
 
 .. only:: html
