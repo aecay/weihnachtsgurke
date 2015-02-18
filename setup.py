@@ -228,20 +228,16 @@ setup_dict = dict(
     # Find a list of classifiers here:
     # <http://pypi.python.org/pypi?%3Aaction=list_classifiers>
     classifiers=[
-        'Development Status :: 1 - Planning',
-        # 'Environment :: Console',
-        # 'Intended Audience :: Developers',
-        # 'License :: OSI Approved :: MIT License',
-        # 'Natural Language :: English',
-        # 'Operating System :: OS Independent',
-        # 'Programming Language :: Python :: 2.6',
-        # 'Programming Language :: Python :: 2.7',
-        # 'Programming Language :: Python :: 3.3',
-        # 'Programming Language :: Python :: Implementation :: PyPy',
-        # 'Topic :: Documentation',
-        # 'Topic :: Software Development :: Libraries :: Python Modules',
-        # 'Topic :: System :: Installation/Setup',
-        # 'Topic :: System :: Software Distribution',
+        'Development Status :: 3 - Alpha',
+        'Environment :: Console',
+        'License :: OSI Approved :: GNU General Public License v3 or later (GPLv3+)',
+        'Natural Language :: English',
+        'Operating System :: OS Independent',
+        'Programming Language :: Python :: 2.6',
+        'Programming Language :: Python :: 2.7',
+        'Programming Language :: Python :: 3.3',
+        'Programming Language :: Python :: Implementation :: PyPy',
+        'Topic :: Other/Nonlisted Topic'
     ],
     packages=find_packages(exclude=(TESTS_DIRECTORY,)),
     install_requires=[
