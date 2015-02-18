@@ -91,6 +91,61 @@ FOO""")
         assert t[1][0] == "bar"
         assert re.match(t[1][1], "bar\tFOO\n")
 
+    def test_example1(self):
+        text = """I\tPRO
+haue\tHVP
+not\tNEG
+,\t,
+I\tPRO
+did\tDOD
+not\tNEG
+desire\tVB
+,\t,
+nor\tCONJ
+intend\tVB
+to\tTO
+declare\tVB
+my\tPRO$
+opinion\tN
+in\tP
+that\tD
+point\tN
+.\t."""
+        pattern = parse_groups("""PRO as subject
+ADV *
+DOD|DOP
+ADV *
+NEG
+ADV *
+VB as verb""")[0][1]
+        assert pattern.search(text)
+
+    def test_example2(self):
+        text = """I\tPRO
+know\tVBP
+not\tNEG
+only\tADV
+Bob\tNPR
+but\tCONJ
+also\tADV
+Jim\tNPR"""
+        pattern = parse_groups("""PRO as subject
+ADV *
+VBP|VBD as verb
+ADV|PRO *
+NEG
+{(?!only|onely).*} as foll1
+.* as foll2""")[0][1]
+        assert not pattern.search(text)
+        text2 = """I\tPRO
+know\tVBP
+not\tNEG
+Bob\tNPR
+but\tCONJ
+also\tADV
+Jim\tNPR"""
+        assert pattern.search(text2)
+
     # def test_parse_terms(self):
     #     t = parse_terms("FOO\nBAR")
     #     assert t.match("bar\tFOO\nbar\tBAR\n")
