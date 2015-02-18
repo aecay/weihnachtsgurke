@@ -2,7 +2,7 @@
    Author: Aaron Ecay
 
 =======================
- Weihnachtsgurke usage
+ Weihnachtsgurke output
 =======================
 
 Weinachtsgurke gives its output as a csv file, suitable for import into
