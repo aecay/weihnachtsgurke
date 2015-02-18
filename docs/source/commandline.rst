@@ -1,3 +1,6 @@
+.. Copyright 2015 University of York
+   Author: Aaron Ecay
+
 ======================
  Command line options
 ======================
