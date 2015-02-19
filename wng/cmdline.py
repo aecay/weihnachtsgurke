@@ -21,6 +21,17 @@ import os
 
 # TODO: code coverage
 
+# TODO: ideas
+# - factor out search code into an api for programmatic use
+# - parallelize
+# - benchmark cpython vs pypy vs nuitka
+# - for repeater + capture: wrap the whole match (word+tag) in a named group;
+#   then extract the match for this group from the string and get the
+#   words/tags from it (by splitting on \n and \t).  Benchmark this to see how
+#   much speed it costs.  Perhaps only activate the slower strategy if the
+#   query contains a repeater + capture? (and print warning to stderr)
+# - web viewer/search tool
+
 
 @click.command()
 @click.option("--search-file", "-s", type=click.Path(exists=True))
