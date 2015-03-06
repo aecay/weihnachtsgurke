@@ -18,6 +18,8 @@ import click
 import sys
 import csv
 import os
+import multiprocessing
+import functools
 
 # TODO: code coverage
 
@@ -33,11 +35,30 @@ import os
 # - web viewer/search tool
 
 
+def search_one_file(patterns, file):
+    results = []
+    fname = os.path.basename(file).split(".")[0]
+    with open(file) as f:
+        sentences = f.read().split("\n\n")
+        for sentence in sentences:
+            for name, pat_rx in patterns:
+                m = pat_rx.search(sentence)
+                if m:
+                    gps = m.groupdict()
+                    gps["file"] = fname
+                    gps["sentence"] = util.pyccle_to_text(sentence)
+                    gps["match"] = util.pyccle_to_text(m.group(0))
+                    gps["rule"] = name
+                    results.append(gps)
+    return results
+
+
 @click.command()
 @click.option("--search-file", "-s", type=click.Path(exists=True))
 @click.option("--output", "-o", type=click.File("w"))
+@click.option("--parallel", "-p", type=int, default=1)
 @click.argument("files", nargs=-1, type=click.Path(exists=True))
-def main(search_file, files, output):
+def main(search_file, files, output, parallel):
     """This program searches the PYCCLE corpus for a Part-of-Speech/text
     sequence.
 
@@ -57,20 +78,14 @@ def main(search_file, files, output):
                             fieldnames=["file", "rule"] + captures +
                             ["match", "sentence"])
     writer.writeheader()
-    for file in files:
-        fname = os.path.basename(file).split(".")[0]
-        with open(file) as f:
-            sentences = f.read().split("\n\n")
-            for sentence in sentences:
-                for name, pat_rx in pat:
-                    m = pat_rx.search(sentence)
-                    if m:
-                        gps = m.groupdict()
-                        gps["file"] = fname
-                        gps["sentence"] = util.pyccle_to_text(sentence)
-                        gps["match"] = util.pyccle_to_text(m.group(0))
-                        gps["rule"] = name
-                        writer.writerow(gps)
+    if parallel > 1:
+        mapfn = multiprocessing.Pool(parallel).imap_unordered
+    else:
+        mapfn = map
+    for res in mapfn(functools.partial(search_one_file, pat), files):
+        for row in res:
+            if row is not None:
+                writer.writerow(row)
 
 
 def entry_point():
