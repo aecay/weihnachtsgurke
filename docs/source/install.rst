@@ -9,8 +9,7 @@ following command in a terminal: ::
     which pip
 
 If you see a file path printed, you have the program installed.  If not,
-you should ``install it
-<https://pip.pypa.io/en/latest/installing.html>`_.
+you should `install it <https://pip.pypa.io/en/latest/installing.html>`_.
 
 Once pip is installed, install Weihnachtsgurke by running: ::
 
