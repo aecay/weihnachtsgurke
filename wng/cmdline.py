@@ -25,7 +25,7 @@ import functools
 
 # TODO: ideas
 # - factor out search code into an api for programmatic use
-# - parallelize
+# - parallelize (done in cli)
 # - benchmark cpython vs pypy vs nuitka
 # - for repeater + capture: wrap the whole match (word+tag) in a named group;
 #   then extract the match for this group from the string and get the
