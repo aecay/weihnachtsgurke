@@ -8,7 +8,7 @@ Information describing the project.
 package = 'weihnachtsgurke'
 project = "PYCCLE-TCP search tool"
 project_no_spaces = project.replace(' ', '')
-version = '0.2'
+version = '0.3-dev'
 description = 'A program for searching for strings of text in the PYCCLE-TCP corpus'
 authors = ["Aaron Ecay"]
 authors_string = ', '.join(authors)
