@@ -20,6 +20,11 @@ The following options are available:
     The file containing a :doc:`description of the search to perform
     <searchguide>`.  Mandatory.
 
+``--parallel``, ``-p``
+    How many processes to launch to perform the search.  If you have a
+    multi-core machine, passing this option can speed up your searches
+    greatly.
+
 Input files
 ===========
 
