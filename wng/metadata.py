@@ -15,4 +15,4 @@ authors_string = ', '.join(authors)
 emails = ["aaronecay@gmail.com"]
 license = 'GPL v3'
 copyright = '2016 University of York'
-url = "(none)"
+url = "https://weihnachtsgurke.readthedocs.io/en/latest/"
