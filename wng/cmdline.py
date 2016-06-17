@@ -41,6 +41,10 @@ def search_one_file(patterns, file):
     with open(file) as f:
         sentences = f.read().split("\n\n")
         for sentence in sentences:
+            # The sentence needs to have a final newline, in case the pattern
+            # is supposed to match its last word.  TODO: test the bug that
+            # originally triggered this.
+            sentence += "\n"
             for name, pat_rx in patterns:
                 m = pat_rx.search(sentence)
                 if m:

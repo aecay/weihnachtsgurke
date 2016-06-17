@@ -8,11 +8,11 @@ Information describing the project.
 package = 'weihnachtsgurke'
 project = "PYCCLE-TCP search tool"
 project_no_spaces = project.replace(' ', '')
-version = '0.3-dev'
+version = '0.3'
 description = 'A program for searching for strings of text in the PYCCLE-TCP corpus'
 authors = ["Aaron Ecay"]
 authors_string = ', '.join(authors)
 emails = ["aaronecay@gmail.com"]
 license = 'GPL v3'
-copyright = '2015 University of York'
+copyright = '2016 University of York'
 url = "(none)"

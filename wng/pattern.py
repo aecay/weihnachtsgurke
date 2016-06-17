@@ -39,7 +39,9 @@ def parse_name_and_terms(s):
     else:
         name = name_match.group(1)
         terms = s[name_match.end(0):]
-    rx = re.compile("".join(map(parse_term, terms.split("\n"))))
+    # TODO: Test the bug that triggered this: the first term in a pattern
+    # could match only a siffix of the word.
+    rx = re.compile("(^|\n)" + "".join(map(parse_term, terms.split("\n"))))
     return (name, rx)
 
 
